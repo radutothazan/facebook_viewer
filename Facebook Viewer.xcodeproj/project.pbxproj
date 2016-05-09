@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1414551250C4ADC605B70F91 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5DFA354A5920084E6FC6D3 /* Pods.framework */; };
+		631629AD1CD4CB6A008F4FA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631629AC1CD4CB6A008F4FA8 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		631629AF1CD4D7A6008F4FA8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631629AE1CD4D7A6008F4FA8 /* ProfileController.swift */; settings = {ASSET_TAGS = (); }; };
+		631629B11CD4EBBF008F4FA8 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631629B01CD4EBBF008F4FA8 /* AlbumController.swift */; settings = {ASSET_TAGS = (); }; };
 		633E4A101CBA69F400801174 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E4A0F1CBA69F400801174 /* AppDelegate.swift */; };
 		633E4A121CBA69F400801174 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E4A111CBA69F400801174 /* ViewController.swift */; };
 		633E4A151CBA69F400801174 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633E4A131CBA69F400801174 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 
 /* Begin PBXFileReference section */
 		0FFE2C54F3053E2F34B0EA2C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		631629AC1CD4CB6A008F4FA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		631629AE1CD4D7A6008F4FA8 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		631629B01CD4EBBF008F4FA8 /* AlbumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		633E4A0C1CBA69F400801174 /* Facebook Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633E4A0F1CBA69F400801174 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633E4A111CBA69F400801174 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		631629B21CD4F5AE008F4FA8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				631629AE1CD4D7A6008F4FA8 /* ProfileController.swift */,
+				633E4A111CBA69F400801174 /* ViewController.swift */,
+				631629B01CD4EBBF008F4FA8 /* AlbumController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		633E4A031CBA69F400801174 = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				633E4A0F1CBA69F400801174 /* AppDelegate.swift */,
-				633E4A111CBA69F400801174 /* ViewController.swift */,
+				631629B21CD4F5AE008F4FA8 /* Controllers */,
+				631629AC1CD4CB6A008F4FA8 /* User.swift */,
 				633E4A131CBA69F400801174 /* Main.storyboard */,
 				633E4A161CBA69F400801174 /* Assets.xcassets */,
 				633E4A181CBA69F400801174 /* LaunchScreen.storyboard */,
@@ -212,7 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				633E4A121CBA69F400801174 /* ViewController.swift in Sources */,
+				631629B11CD4EBBF008F4FA8 /* AlbumController.swift in Sources */,
 				633E4A101CBA69F400801174 /* AppDelegate.swift in Sources */,
+				631629AD1CD4CB6A008F4FA8 /* User.swift in Sources */,
+				631629AF1CD4D7A6008F4FA8 /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +345,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Facebook Viewer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.radutot.Facebook-Viewer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -337,9 +359,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Facebook Viewer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.radutot.Facebook-Viewer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
