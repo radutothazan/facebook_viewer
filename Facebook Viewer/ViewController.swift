@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     @IBAction func loginAction(sender: AnyObject) {
         
         //self.fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends","user_photos"], handler: { (result, error)-> Void in
-        self.fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends","user_photos"], fromViewController: self, handler: { (result, error)-> Void in
+        self.fbLoginManager.logInWithReadPermissions(["public_profile", "email", "user_friends","user_photos","user_posts","user_status"], fromViewController: self, handler: { (result, error)-> Void in
             if error == nil
             {
                 let fbLoginResult:FBSDKLoginManagerLoginResult = result
@@ -81,9 +81,9 @@ class ViewController: UIViewController {
                     //print(result)
                     self.user.setFirstName(self.dict.valueForKey("first_name") as! String)
                     self.user.setLastName(self.dict.valueForKey("last_name")as! String)
-                    self.user.setImageString((result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!)
+                    self.user.setImageString((self.dict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!)
+                    
                     //print(self.dict)
-                    //NSLog(self.dict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String)
                 }
             })
             
