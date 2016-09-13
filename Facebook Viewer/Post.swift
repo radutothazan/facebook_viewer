@@ -7,42 +7,34 @@
 //
 
 import Foundation
-import FBSDKLoginKit
-import FBSDKCoreKit
+import ObjectMapper
 
-class Post{
+class PostsData: Mappable{
+    var data: [Post]?
     
-    private var story: String!
-    private var picture: String!
-    
-    init(story: String, picture: String){
-        self.story = story
-        self.picture = picture
-    }
-    init(story:String){
-        self.story = story
-    }
-    init(picture: String){
-        self.picture = picture
+    required init?(_ map: Map) {
     }
     
-    
-    func getStory() -> String{
-        return self.story
+    func mapping(map: Map){
+        data <- map["data"]
     }
-    func getPicture() -> String{
-        return self.picture
+}
+
+class Post: Mappable{
+    
+    var story: String?
+    var picture: String?
+    var message : String?
+    
+    required init?(_ map: Map) {
     }
     
-    func setStory(story: String){
-        self.story = story
+    func mapping(map: Map){
+        story   <- map["story"]
+        picture <- map["picture"]
+        message <- map["message"]
+        if picture == nil{
+            picture = ""
+        }
     }
-    func setPicture(picture: String){
-        self.picture = picture
-    }
-    
-    
-    
-    
-    
 }

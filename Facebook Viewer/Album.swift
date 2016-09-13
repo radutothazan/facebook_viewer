@@ -7,48 +7,38 @@
 //
 
 import Foundation
-import FBSDKLoginKit
-import FBSDKCoreKit
+import ObjectMapper
 
-class Album{
-    private var id : String!
-    private var name : String!
-    private var cover : String!
-    private var count: Int!
+class AlbumData: Mappable{
+    var data: [Album]?
     
-    init(){
+    required init?(_ map: Map) {
     }
-    init(id: String, name: String, cover: String, count: Int){
-        self.id = id
+    
+    func mapping(map: Map){
+        data <- map["data"]
+    }
+}
+
+class Album: Mappable{
+    var id: String!
+    var name: String!
+    var cover: String!
+    var count: Int!
+    
+    required init?(_ map: Map) {
+    }
+    
+    init(name: String, cover: String, count: Int){
         self.name = name
         self.cover = cover
         self.count = count
     }
     
-    func getId() -> String{
-        return self.id
+    func mapping(map: Map){
+        id    <- map["id"]
+        name  <- map["name"]
+        cover <- map["picture.data.url"]
+        count <- map["count"]
     }
-    func getName() -> String{
-        return self.name
-    }
-    func getCover() -> String{
-        return self.cover
-    }
-    func getCount() -> Int{
-        return self.count
-    }
-    
-    func setId(id: String){
-        self.id = id
-    }
-    func setName(name: String){
-        self.name = name
-    }
-    func setCover(cover: String){
-        self.cover = cover
-    }
-    func setCount(count: Int){
-        self.count = count
-    }
-    
 }

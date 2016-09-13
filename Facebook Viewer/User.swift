@@ -7,40 +7,24 @@
 //
 
 import Foundation
-import FBSDKLoginKit
-import FBSDKCoreKit
+import ObjectMapper
 
-class User{
-    private var firstName : String!
-    private var lastName : String!
-    private var imageString : String!
-    //private var accessToken : FBSDKAccessToken!
+class User: Mappable {
+    var firstName : String!
+    var lastName : String!
+    var imageString : String?
+    var coverPhoto: String?
     
-    func getFirstName() -> String{
-        return self.firstName
+    init(){
     }
-    func getLastName() -> String{
-        return self.lastName
-    }
-    func getImageString() -> String{
-        return self.imageString
-    }
-//    func getAccessToken() -> String{
-//        retrun self.accessToken
-//    }
     
-    func setFirstName(firstName: String){
-        self.firstName = firstName
+    required init?(_ map: Map) {
     }
-    func setLastName(lastName: String){
-        self.lastName = lastName
-    }
-    func setImageString(imageString: String){
-        self.imageString = imageString
-    }
-//    func setAccessToken(accessToken: FBSDKAccessToken){
-//        self.accessToken = FBSDKAccessToken.currentAccessToken()
-//    }
     
-    
+    func mapping(map: Map){
+        firstName   <- map["first_name"]
+        lastName    <- map["last_name"]
+        imageString <- map["picture.data.url"]
+        coverPhoto  <- map["cover.source"]
+    }
 }

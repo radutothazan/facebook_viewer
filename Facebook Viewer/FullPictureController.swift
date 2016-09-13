@@ -7,49 +7,46 @@
 //
 
 import UIKit
-import FBSDKLoginKit
-import FBSDKCoreKit
 
-class FullPictureController: UIViewController {
+class FullPictureController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var titlu: UILabel!
-    @IBOutlet weak var imagine: UIImageView!
-    var imagineURL : String!
-    var user : User!
-    var album : Album!
-    var accessToken : FBSDKAccessToken!
+    @IBOutlet weak var collectionView: UICollectionView!
+    var selectedIndexPath : NSIndexPath?
+    var accessToken : String = ""
+    var poze : [Photo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagine.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imagineURL)!)!)
-        titlu.text = ""
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "backPictures"{
-            let vc = segue.destinationViewController as! PicturesController
-            vc.accessToken = self.accessToken
-            vc.user = self.user
-            vc.album = self.album
+    
+    override func viewDidLayoutSubviews() {
+        if selectedIndexPath != nil {
+            self.collectionView.scrollToItemAtIndexPath(self.selectedIndexPath!, atScrollPosition: .CenteredHorizontally, animated: false)
+            selectedIndexPath = nil
         }
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        performSegueWithIdentifier("backPictures", sender: self)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height);
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let newCell = collectionView.dequeueReusableCellWithReuseIdentifier("fullPhotoCell", forIndexPath: indexPath) as! FullPhotoCell
+        newCell.photo.image = self.poze[indexPath.row].picture
+        self.title = self.poze[indexPath.row].name
+        return  newCell
     }
-    */
-
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.poze.count
+    }
 }

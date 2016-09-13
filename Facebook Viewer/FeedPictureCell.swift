@@ -10,8 +10,9 @@ import UIKit
 
 class FeedPictureCell: UITableViewCell {
 
-    @IBOutlet weak var story: UILabel!
-    @IBOutlet weak var picture: UIImageView!
+    @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var story: UILabel?
+    @IBOutlet weak var picture: UIImageView?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
